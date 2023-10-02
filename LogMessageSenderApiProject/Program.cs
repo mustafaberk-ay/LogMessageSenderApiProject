@@ -43,16 +43,8 @@ namespace LogMessageSenderApiProject
             using (var serviceScope = app.Services.CreateScope())
             {
                 var services = serviceScope.ServiceProvider;
-                try
-                {
-                    var myController = services.GetRequiredService<ActionsController>();
-                    await myController.Initialize();
-                }
-                catch (Exception ex)
-                {
-                    // Handle the exception or log it
-                    Console.WriteLine(ex.Message);
-                }
+                var myController = services.GetRequiredService<ActionsController>();
+                await myController.Initialize();
             }
 
             app.Run();
